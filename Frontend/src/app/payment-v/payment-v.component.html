@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bkash payment</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-col-3">
+
+
+                <form>
+                    <div class="a">
+
+                        <div class="form-signin">
+                            <span id="header">
+                                <div>
+                                    <div id="logoHolder">
+                                        <div id="logo"></div>
+                                    </div>
+
+                                    <hr id="itemDiv" class="itemDivider">
+                                    <div id="trxLoader" style="display: none;">
+                                        <span class="loadingText">Getting payment info.</span>
+                                        <span class="loadingText">Please wait...</span>
+                                    </div>
+                                    <div id="trxInfo">
+                                        <div id="merchantLogo"
+                                            style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/merchantlogo.sandbox.bka.sh/pgw-default.png');">
+                                        </div>
+                                        <div class="infoNameInvoice">
+                                            <span id="merchantName">TestCheckoutDemoMerchant1</span>
+                                            <div class="infoInvoice">
+                                                <span class="invoiceText">Invoice:</span>
+                                                <span id="merchantInvoice1">{{data.invoiceId}}</span>
+                                            </div>
+                                            <span id="merchantInvoice2"></span>
+
+                                        </div>
+                                        <div class="trxMerchantAmount">
+                                            <span class="merchantAmount">৳ </span><span
+                                                id="merchantAmountVal">{{data.totalAmount}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                            <span id="container">
+                                <form class="formBody" action="#" method="POST" id="login_form">
+
+                                    <div id="inputHolder">
+                                        <span for="otp" class="infoText">Enter verification code sent to <b
+                                                id="phone_num">{{getMaskedPhone()}}</b></span>
+                                        <input type="text" id="otp" name="otp" class="form-control"
+                                            placeholder="bKash Verification Code" [(ngModel)]="otpInp"
+                                            autocomplete="off" maxlength="6" required />
+
+                                        <span *ngIf="!error" class="infoText">By clicking on <b> Confirm,</b> you are agreeing to the
+                                            <b><a href="https://www.bkash.com/terms-of-use-checkout"
+                                                    target="_blank">terms
+                                                    &amp; conditions</a></b> </span>
+
+
+                                        <span *ngIf="error" class="infoText" id="resend_info_text">Didn't receive code?
+                                            <b class="textButton" id="resend_otp_text">
+                                                <u>Resend code</u>
+                                            </b>
+                                        </span>
+
+                                        <div *ngIf="error" id="error">Put a valid verification code</div>
+                                    </div>
+
+                                    <div id="loader_div" style="display: none;">
+                                        <div id="loader_image"></div>
+                                    </div>
+
+                                    <div id="button_div" class="buttonAction">
+                                        <button type="button" id="close_button">Close</button>
+                                        <button type="submit" id="submit_button" (click)="onConfirm()">
+                                            Confirm
+                                        </button>
+
+                                    </div>
+                                </form>
+                            </span>
+                            <span id="footer">
+                                <div id="footerItem">
+                                    <div id="credit">
+                                        <div class="dialerItem">
+                                            <div id="dialer"></div>
+                                        </div>
+
+                                        <b id="dialText">16247</b>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
